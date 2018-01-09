@@ -5,7 +5,11 @@ import java.awt.Point;
 public class Tile {
 	
 	//// Fields
-	
+
+	public static int TILE_SIZE = 20;
+	public static int TILE_CORNER = 7;
+	public static 
+
 	// Values that we need to keep track of
 	private Point pos;
 	private char letter; // 0 for wild (note: 0 != '0')
@@ -31,7 +35,11 @@ public class Tile {
 	 * Displays the tile on the screen
 	 */
 	public void display(){
-		// TODO: write this or figure out where this code should go
+
+		fill(color(0, 0, 0));
+		rect(pos.x, pos.y, Tile.TILE_SIZE, Tile.TILE_SIZE, Tile.TILE_CORNER);
+
+
 	}
 	
 }
