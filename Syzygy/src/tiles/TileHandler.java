@@ -13,7 +13,9 @@ public class TileHandler {
 	
 	//// Constructors
 	
-	
+	public TileHandler() {
+		
+	}
 	
 	//// Methods
 	
@@ -47,6 +49,10 @@ public class TileHandler {
 		
 	}
 	
-	public void display() {}
+	public void display() {
+		for(Tile t : tiles) {
+			t.display();
+		}
+	}
 	
 }
