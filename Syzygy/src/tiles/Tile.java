@@ -2,13 +2,16 @@ package tiles;
 
 import java.awt.Point;
 
+import processing.core.PApplet;
+
 public class Tile {
 	
 	//// Fields
 
-	public static int TILE_SIZE = 20;
+	public static PApplet pApp;
+	public static int TILE_SIZE = 30;
 	public static int TILE_CORNER = 7;
-	public static int[] TILE_RGB = new int[] {63, 63, 255};
+	public static int TILE_RGB = 0x4040FF; // ~light blue
 	public static boolean CAPS = true;
 
 	// Values that we need to keep track of
@@ -38,21 +41,31 @@ public class Tile {
 	public void display(){
 		
 		// Draw rectangle
-		fill(Tile.TILE_RGB[0], Tile.TILE_RGB[1], Tile.TILE_RGB[2]);
-		rectMode(CENTER);
-		rect(pos.x, pos.y, Tile.TILE_SIZE, Tile.TILE_SIZE, Tile.TILE_CORNER);
+		pApp.fill(Tile.TILE_RGB);
+		pApp.rectMode(pApp.CENTER);
+		pApp.rect(pos.x, pos.y, Tile.TILE_SIZE, Tile.TILE_SIZE, Tile.TILE_CORNER);
 		
 		// Draw the letter
 		
-		fill(0, 0, 0);
-		// text size based on the box size
-		textAlign(CENTER, CENTER);
-		text(getDisplayCharacter(), pos.x, pos.y);
+		pApp.fill(0, 0, 0);
+		
+		pApp.textAlign(pApp.CENTER, pApp.CENTER);
+		pApp.text(getDisplayCharacter(), pos.x, pos.y);
 		
 	}
 	
-	private String getDisplayChar() {
-		String s = ((letter == 0) ? '?' : letter);
+	public int contrastingTextRGB(int backgroundRGB) {
+		
+		return ((((backgroundRGB >> 16) & 0xFF) * 0.299
+				+ ((backgroundRGB >> 8) & 0xFF) * 0.587
+				+ ((backgroundRGB) & 0xFF) * 0.114) > 186)
+				? 0x000000
+				: 0xFFFFFF;
+		
+	}
+	
+	private String getDisplayCharacter() {
+		String s = "" + ((letter == 0) ? '?' : letter);
 		return (Tile.CAPS ? s.toUpperCase() : s.toLowerCase());
 	}
 	

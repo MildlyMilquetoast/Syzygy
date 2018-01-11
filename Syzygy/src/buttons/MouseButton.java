@@ -14,10 +14,5 @@ public class MouseButton extends Button{
 	}
 	
 	//// Methods
-	
-	@Override
-	public boolean update() {
-		// TODO: Figure out how to get input in here
-	}
 
 }

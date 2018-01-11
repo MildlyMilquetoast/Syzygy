@@ -1,6 +1,6 @@
 package buttons;
 
-public abstract class Button {
+public class Button {
 	
 	//// Fields
 	
@@ -12,12 +12,20 @@ public abstract class Button {
 	protected boolean isPressed;
 	protected boolean wasPressed;
 	
+	protected boolean pressedThisFrame;
+	
 	//// Methods
 	
+	public void press() { pressedThisFrame = true; }
+	public void release() { pressedThisFrame = false; }
+	
 	public boolean isPressed() { return isPressed; }
-	
 	public boolean wasPressed() { return wasPressed; }
+	public boolean isClicked() { return (isPressed && !wasPressed); }
 	
-	public abstract boolean update();
+	public void update() {
+		wasPressed = isPressed;
+		isPressed = pressedThisFrame;
+	}
 	
 }

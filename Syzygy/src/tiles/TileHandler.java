@@ -33,7 +33,9 @@ public class TileHandler {
 	
 	public ConnectionDirection shouldConnect(Tile a, Tile b) { return null; }
 	
-	public ArrayList<Tile> getConnectedTiles(Tile t) { return new ArrayList<Tile>(); }
+	public ArrayList<Tile> getConnectedTiles(Tile t) {
+		return new ArrayList<Tile>();
+	}
 	
 	public void MoveTiles(Tile t, int dx, int dy) {
 		
@@ -43,9 +45,13 @@ public class TileHandler {
 		
 	}
 	
-	public void placeNew(Tile t) {
+	public boolean placeNew(Tile t) {
 		
+		if(t == null) return true;
 		
+		// TODO: add a tile in a good place
+		
+		return false;
 		
 	}
 	

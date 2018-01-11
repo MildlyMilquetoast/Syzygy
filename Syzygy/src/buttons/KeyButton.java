@@ -1,8 +1,12 @@
 package buttons;
 
+import buttons.ButtonHandler.Type;
+
 public class KeyButton extends Button{
 	
 	//// Fields
+	
+	public final Type type = Type.KEY;
 	
 	private int keyCode;
 	
@@ -14,10 +18,5 @@ public class KeyButton extends Button{
 	}
 	
 	//// Methods
-	
-	@Override
-	public boolean update() {
-		// TODO: Figure out how to get input in here
-	}
 
 }
