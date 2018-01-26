@@ -2,10 +2,11 @@ package buttons;
 
 import java.awt.Rectangle;
 
-public class ScreenButton extends Button {
+public class ScreenButton{
 	
 	//// Fields
 	
+	private String name;
 	private Rectangle box;
 	
 	//// Constructors

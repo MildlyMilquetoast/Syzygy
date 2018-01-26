@@ -12,8 +12,10 @@ public class TileDrawer {
 	
 	public static final int[] DEFAULT_DISTRIBUTION = new int[]{
 	//      a   b   c   d   e   f   g   h   i   j   k   l   m   n   o   p   q   r   s   t   u   v   w   x   y   z   ?		
-			26, 6 , 6 , 12, 34, 6 , 12, 7 , 25, 3 , 3 , 12, 6 , 17, 23, 7 , 3 , 18, 13, 16, 12, 6 , 6 , 3 , 6 , 4 , 12};
-	
+//			26, 6 , 6 , 12, 34, 6 , 12, 7 , 25, 3 , 3 , 12, 6 , 17, 23, 7 , 3 , 18, 13, 16, 12, 6 , 6 , 3 , 6 , 4 , 12}; // syzygy
+			13, 3 , 3 , 6 , 18, 3 , 6 , 3 , 12, 2 , 2 , 5 , 3 , 8 , 11, 3 , 2 , 9 , 6 , 9 , 6 , 3 , 3 , 2 , 3 , 2 , 0}; // bananagrams
+//			2, 0 , 0 , 2 , 3, 0 , 0 , 0 , 0, 0 , 0 , 0 , 0 , 0 , 0, 0 , 0 , 1 , 2 , 2 , 0 , 0 , 0 , 0 , 0 , 0 , 0}; // bananagrams
+			
 	public ArrayList<Character> remainingChars = new ArrayList<Character>();
 	
 	//// Constructors / startup Methods
@@ -38,7 +40,7 @@ public class TileDrawer {
 		}
 		
 		// For the last number, add that many null bytes (wilds)
-		for(int i = 0; i < distribution[26]; i++) remainingChars.add((char) 0);
+//		for(int i = 0; i < distribution[26]; i++) remainingChars.add((char) 0);
 		
 	}
 	

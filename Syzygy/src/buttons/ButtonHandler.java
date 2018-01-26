@@ -4,15 +4,9 @@ import java.util.ArrayList;
 
 public class ButtonHandler {
 	
-	public enum Type{
-		KEY,
-		MOUSE,
-		SCREEN
-	}
-	
 	//// Fields
 	
-	private ArrayList<Button> buttons = new ArrayList<Button>();
+	public ArrayList<Button> buttons = new ArrayList<Button>();
 	
 	//// Constructors
 	
@@ -20,9 +14,25 @@ public class ButtonHandler {
 	
 	//// Methods
 	
-	public void press(Type type, int keyCode) {
+	public void changeKeyState(int code, boolean on) {
+		
+		for(Button b : buttons) {			
+			if(b.type == ButtonType.KEY && b.keyCode == code) {
+				b.changeState(on);				
+			}
+		}
 		
 	}
+	
+	public void changeMouseState(int code, boolean on) {
+		
+		for(Button b : buttons) {
+			if(b.type == ButtonType.MOUSE && b.keyCode == code) b.changeState(on);
+		}
+		
+	}
+	
+	// TODO: changeScreenState(stuff)
 	
 	/**
 	 * Updates all the buttons
@@ -32,27 +42,20 @@ public class ButtonHandler {
 			b.update();
 		}
 	}
-	
-	/**
-	 * Displays all the ScreenButtons on the screen
-	 */
-	public void display(){
-		for(Button b : buttons){
-			if(b instanceof ScreenButton) ((ScreenButton) b).display();
-		}
-	}
 
-	public boolean isPressed(String name){
-		return get(name).isPressed();
+	public PressType[] getTicks(String name){
+		return get(name).getTicks();
 	}
 	
-	public boolean wasPressed(String name){
-		return get(name).wasPressed();
-	}
+	public boolean isHeld(String name) { return getTicks(name)[0] == PressType.HELD; }
+	public boolean isPressed(String name) { return getTicks(name)[0] == PressType.PRESS; }
+	public boolean isReleased(String name) { return getTicks(name)[0] == PressType.RELEASE; }
+	public boolean isClicked(String name) { return getTicks(name)[0] == PressType.CLICK; }
+	public boolean isNone(String name) { return getTicks(name)[0] == PressType.NONE; }
 	
-	public boolean isClicked(String name) {
-		return get(name).isClicked();
-	}
+	public boolean isOn(String name) { return (isHeld(name) || isPressed(name) || isClicked(name)); }
+	public boolean isActivated(String name) { return (isPressed(name) || isClicked(name)); }
+	public boolean isDeactivated(String name) { return (isReleased(name) || isClicked(name)); }
 	
 	/**
 	 * Given the name of a Button, returns it
