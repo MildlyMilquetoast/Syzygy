@@ -62,6 +62,8 @@ public class Board {
 
 		tiles.display();
 		
+		parent.text(pile.remainingChars.size() + " tiles left", 200, parent.SCREEN_HEIGHT - 50);
+		
 		if(done) {
 			parent.text("Congrats! You win!\nYou're time was " + ((endTime - startTime) / 1000) + " seconds"
 					, parent.SCREEN_WIDTH / 2, parent.SCREEN_HEIGHT / 2);
